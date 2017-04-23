@@ -1,0 +1,29 @@
+group 'com.uitschool.kliuieva.gradletestng'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.testng', name: 'testng', version: '6.11'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.3.1'
+    compile group: 'io.appium', name: 'java-client', version: '4.1.2'
+
+}
+
+task ChromeTest(type: Test) {
+    systemProperty "driver", "chrome"
+    useTestNG() {
+        suites "src\\test\\resources\\testng-suite.xml"
+    }
+}
+task FireFoxTest(type: Test) {
+    systemProperty "driver", "firefox"
+    useTestNG() {
+        suites "src\\test\\resources\\testng-suite.xml"
+    }
+}
