@@ -1,4 +1,4 @@
-group 'com.uitschool.kliuieva.gradletestng'
+group 'com.uitschool.kliuieva.MailRuTest_GradleTestNG_2.0'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gradletestng.iml" filepath="$PROJECT_DIR$/.idea/modules/gradletestng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MailRuTest_GradleTestNG_2.0.iml" filepath="$PROJECT_DIR$/.idea/modules/MailRuTest_GradleTestNG_2.0.iml" />
     </modules>
   </component>
 </project>
