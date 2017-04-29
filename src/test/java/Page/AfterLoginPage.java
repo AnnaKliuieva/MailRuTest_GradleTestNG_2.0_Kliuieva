@@ -9,40 +9,32 @@ import javax.xml.xpath.XPath;
 
 public class AfterLoginPage extends BasePage {
 
-    public AfterLoginPage(WebDriver driver) {
-        super(driver);
-
-    }
-
     @FindBy(id = "PH_user-email")
-    private WebElement userLoginEmail;
+    protected WebElement userLoginEmail;
 
-    @FindBy(xpath = "div/a[@class =\"mts35-nY\" and @href=\"/messages/inbox/\"]")
+    @FindBy(xpath = ".//*[@id='b-nav_folders']/div/div[1]/a/span[2]")
     private WebElement inbox;
 
-    //@FindBy(xpath = "//*[contains(text(),"Написать письмо")]")
-    @FindBy(xpath = "//div[@id=\"etQax-c6\"]//a//span[@class=\"b-toolbar__btn__text b-toolbar__btn__text_pad\"]")
+    @FindBy(xpath = ".//*[@id='b-toolbar__left']/div/div/div[2]/div/a/span")
     private WebElement writeLetterButton;
 
-    @FindBy(xpath = "//div[@class=\"mts35-f9\"]//a//div[@class=\"b-datalist__item__subj\"]")
-    private WebElement icomingMessage;
+    @FindBy(xpath= ".//*[@id='b-letters']/div/div[2]/div/div[2]/div[1]/div/a/div[4]/div[3]/div[1]/div")
+    private WebElement incomingMessage;
 
-    public String getMailUser() {
-        return userLoginEmail.getText();
-    }
+
 
     public SendLetterPage writeLetter() {
-        writeLetterButton.submit();
-        return new SendLetterPage(driver);
+        writeLetterButton.click();//(submit  dlia podtvergdeniia formy )
+        return new SendLetterPage();
     }
 
     public AfterLoginPage checkInbox() {
-        inbox.submit();
-        return new AfterLoginPage(driver);
+        inbox.click();
+        return new AfterLoginPage();
     }
 
     public String getSubjectContent() {
-        return icomingMessage.getText();
+        return incomingMessage.getText();
     }
 
 }

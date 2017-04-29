@@ -1,14 +1,16 @@
 package Page;
 
+import Driver.MyDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 
 public class BasePage {
-    WebDriver driver;
+    protected static final WebDriver driver = MyDriverFactory.getDriver();
+    protected final String BASE_URL = "http://mail.ru";
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+
+    public BasePage() {
         PageFactory.initElements(driver, this);
     }
 }

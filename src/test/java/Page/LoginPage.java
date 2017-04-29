@@ -17,15 +17,16 @@ public class LoginPage extends BasePage {
     @FindBy(id = "mailbox__auth__button")
     private WebElement authButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    protected void setName(String name) {
+        this.name.sendKeys(name);
     }
 
-    public AfterLoginPage login(String name, String password) throws InterruptedException {
-        this.name.sendKeys(name);
+    protected void setPassword(String password) {
         password_.sendKeys(password);
+    }
+
+    protected void authButtonClick() throws InterruptedException {
         authButton.submit();
-        Thread.sleep(15000);
-        return new AfterLoginPage(driver);
+        Thread.sleep(5000);
     }
 }

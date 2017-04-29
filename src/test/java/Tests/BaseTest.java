@@ -4,19 +4,21 @@ import Driver.MyDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
+import javax.management.InvalidApplicationException;
+
 
 public class BaseTest {
-    protected WebDriver driver;
-    final String BASE_URL = "http://mail.ru";
+    protected MyApplication app;
 
     @BeforeSuite
     public void beforeSuite() throws Exception {
-        driver = MyDriverFactory.getDriver();
-        driver.get(BASE_URL);
+        app = new MyApplication();
+        app.common.startDriver();
     }
 
     @AfterSuite
     public void afterSuite() throws Exception {
-        driver.quit();
+        app.common.stopDriver();
+
     }
 }
