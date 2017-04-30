@@ -1,27 +1,26 @@
 package Tests;
 
+import User.User;
+import User.UserFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
 public class MyTest extends BaseTest {
 
-
-    // AfterLoginPage afterLoginPage;
-    // SendLetterPage sendLetterPage;
-
-
     @Test(description = "Login Test")
     public void testTest() throws Exception {
 
-        app.login.login("mytest_test", "337774a");
-        Assert.assertEquals(app.afterlogin.getMailUser(), "mytest_test@mail.ru", "Error");
+        User validUser = UserFactory.getValidUser();
+        app.login.login(validUser);
+        Assert.assertEquals(app.afterlogin.getMailUser(), validUser.mail, "Error");
 
     }
 
 
     @Test(description = "SendLetter Test", dependsOnMethods = {"testTest"}, alwaysRun = true)
     public void sendLetterTest() throws Exception {
+
         String actual = app.afterlogin.writeLetter().
                 sendLetter("mytest_test@mail.ru", "testKliuieva").
                 checkInbox().getSubjectContent();
